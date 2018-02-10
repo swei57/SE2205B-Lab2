@@ -12,15 +12,20 @@ public class RecursiveStringReplace
      */
     public String replace(String s, char from, char to)
     {
-        String result = null;
-
         // IMPLEMENT THIS RECURSIVE METHOD
 //>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
-
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<        
-
-        return result;
+if (s.length() < 1) {  //base case
+      return s;
     }
-
-
+    else {
+      char result; //temp char holder
+      if(from == s.charAt(0)){ // if the first position of the string's character is the same as from, set change = to.
+          result = to;
+      }else{
+          result = s.charAt(0); //if first position is not the same as from, set change to the index of first position of the string
+      }
+      return result + replace(s.substring(1), from, to); //decrease the string by 1 from the front, and do recursive call
+    }
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<        
+    }
 }

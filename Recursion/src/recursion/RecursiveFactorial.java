@@ -13,15 +13,23 @@ public class RecursiveFactorial
     {
         // IMPLEMENT THIS METHOD 
         // AND RETURN SOMETHING APPROPRIATE
-//>>>>>>>>> REPLACEMENT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
-
+//>>>>>>>>> REPLACEMENT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   
+        long startTime = System.currentTimeMillis();
+        if(n<1){
+            return 1;
+        }
+        if(n>=1){
+            return n*basic(n-1);
+        }
+        
+        long elapsedTime = System.currentTimeMillis() - startTime;
+System.out.println("Time to compute ... was "+ elapsedTime + " milliseconds.");
         return 0;
+        
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<        
         
     }
-    
-    
-    
+
     /**
      * The tail recursive version of factorial.
      * 
@@ -32,8 +40,12 @@ public class RecursiveFactorial
     {
         // IMPLEMENT THIS METHOD USING THE RECURSIVE HELPER FUNCTION
         // AND RETURN SOMETHING APPROPRIATE
-//>>>>>>>>> REPLACEMENT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
-
+//>>>>>>>>> REPLACEMENT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
+        if(n<1){
+            return 1;
+        }
+        if(n>=1)
+        return helper(n,1);
         return 0;
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<        
     }
@@ -48,13 +60,13 @@ public class RecursiveFactorial
 
     private long helper(long n, long partial)
     {
-        long result = 0;
         // IMPLEMENT THIS TAIL RECURSIVE METHOD
 //>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
-
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  
-      
-        return result;
+    if(n<=1){
+      return partial;
+    }else{
+        return helper(n-1,n*partial);
     }
-
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  
+    }
 }

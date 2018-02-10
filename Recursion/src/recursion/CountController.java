@@ -34,14 +34,12 @@ public class CountController implements Initializable {
         int n = Integer.parseInt(this.n_text.getText()); 
         this.countUpWindow.clear();
         countUp(n);
-    }
-        
+    }        
     public void countDownBtnClicked(){
         int n = Integer.parseInt(this.n_text.getText()); 
         this.countDownWindow.clear();
         countDown(n);
     }
-
        /**
      * countUp - A recursive function that counts up from 1 to n.
      *
@@ -50,11 +48,13 @@ public class CountController implements Initializable {
     private void countUp(int n)
     {
         // IMPLEMENT THIS RECURSIVE METHOD
-        this.countUpWindow.appendText("Please implement this method " + "\n");
+        //this.countUpWindow.appendText("Please implement this method " + "\n");
 //>>>>>>>>> Comment the line above and add your code here <<<<<<<<<<<<<<<<<<<<        
-
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<   
-     
+        if(n>=1){
+            countUp(n-1);
+            countUpWindow.appendText(Integer.toString(n));
+        }      
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<    
     }
     
      /**
@@ -65,11 +65,13 @@ public class CountController implements Initializable {
     private void countDown(int n)
     {
         // IMPLEMENT THIS RECURSIVE METHOD
-        this.countDownWindow.appendText("Please implement this method " + "\n");
+     //   this.countDownWindow.appendText("Please implement this method " + "\n");
 //>>>>>>>>> Comment the line above and add your code here <<<<<<<<<<<<<<<<<<<<        
-
+        if(n>=1){
+            countDownWindow.appendText(Integer.toString(n));
+            countDown(n-1);
+        }
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<        
-
     }
     
  
