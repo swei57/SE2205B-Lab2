@@ -32,12 +32,22 @@ public class RecursiveFibonacci
      */
     public long better(long n)
     {
-        long result = 0;
         // IMPLEMENT THIS RECURSIVE METHOD
 //>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
-
+        if(n<=0){
+            return 0;
+        }
+        if(n==1){
+            return 1;
+        }
+        if(n%2==0 &&n>1){
+            return better(n/2)*better(n/2)+2*better(n/2)*better((n/2)-1);
+        }
+        if(n%2==1 &&n>1){
+            return 2*better(n/2)*better(n/2)+2*better(n/2)*better((n/2)-1)+better((n/2)-1)*better((n/2)-1);
+        }
+        return 0;
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<        
-        return result;
     }
 
 
@@ -50,13 +60,10 @@ public class RecursiveFibonacci
      */
     public long tailRecursive(long n)
     {
-        // IMPLEMENT THIS METHOD USING A RECURSIVE HELPER FUNCTION
-        // AND RETURN AN APPROPRIATE VALUE
-//>>>>>>>>> REPLACEMENT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
-
-        return 0;
+      return helper(n, 1, 0);
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<        
     } 
+    
     
      
     /**
@@ -72,7 +79,15 @@ public class RecursiveFibonacci
     {  
         long result = 0;
 //>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>           
-     
+        if(n<=0) result = fi1;
+        else if(n==1) result = fi;
+        else{
+            if(secondMSB(n)){
+                result = helper(reduceBy2ndMSB(n), 2*fi*fi+2*fi*fi1+fi1*fi1, fi*fi+2*fi*fi1);
+            }else{
+                result = helper(reduceBy2ndMSB(n),fi*fi+2*fi*fi1,fi*fi+fi1*fi1);
+            }
+        }
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<        
         return result;
     }
@@ -88,9 +103,8 @@ public class RecursiveFibonacci
     {
         // IMPLEMENT THIS METHOD AND RETURN AN APPROPRIATE VALUE
 //>>>>>>>>> REPLACEMENT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
- 
+        return n>(n^(n>>1));
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 
-        return false;
     }
 
 
@@ -104,14 +118,16 @@ public class RecursiveFibonacci
      */    
     public long reduceBy2ndMSB(long n)
     {
-        long result = 1;
+        int i=256;
         // IMPLEMENT THIS METHOD
 //>>>>>>>>> ADDED CODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>        
-
+        while(i>n){
+            i = i/2;
+        }
+        int index = i/2; while(n>=index){
+            n-=index;
+        }
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        
-        return result;
+        return n+index;
     }
-    
-    
 }
